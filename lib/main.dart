@@ -58,6 +58,70 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [const SizedBox(height: 8)],
+        ),
+      ),
+    );
+  }
+}
+
+class _Section extends StatelessWidget {
+  final String title;
+  final bool showMore;
+
+  const _Section({required this.title, required this.showMore});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          if (showMore) const Icon(Icons.more_horiz, color: Colors.grey),
+        ],
+      ),
+    );
+  }
+}
+
+class _Item extends StatelessWidget {
+  final Color color;
+  final IconData icon;
+  final String label;
+
+  const _Item({required this.color, required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: Colors.white, size: 22),
+            ),
+            const SizedBox(width: 16),
+            Text(label, style: const TextStyle(fontSize: 18)),
+          ],
+        ),
+      ),
     );
   }
 }
