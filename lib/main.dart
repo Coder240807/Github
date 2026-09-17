@@ -3,6 +3,7 @@ import 'package:flutter_octicons/flutter_octicons.dart';
 
 import 'inbox.dart';
 import 'explore.dart';
+import 'copilot.dart';
 
 void main() {
   runApp(const GithubApp());
@@ -39,6 +40,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     const InboxScreen(),
     const ExploreScreen(),
+    const CopilotScreen(),
   ];
 
   @override
