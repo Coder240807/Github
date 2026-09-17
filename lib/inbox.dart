@@ -133,7 +133,7 @@ class InboxScreen extends StatelessWidget {
               title: 'Add personal profile doc and navbar link',
               subtitleLeadingIcon: OctIcons.triangle_up_16,
               subtitleLeadingColor: Colors.white,
-              subtitle: '@Coder240807 is attempting to deploy a...',
+              subtitle: '@Coder240807 is attempting to deploy',
               time: '16d',
             ),
             const Divider(color: Color(0xFF21262D), height: 1),

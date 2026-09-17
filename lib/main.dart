@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
 
 import 'inbox.dart';
+import 'explore.dart';
 
 void main() {
   runApp(const GithubApp());
@@ -34,7 +35,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int current_index = 0;
 
-  final List<Widget> _pages = [const HomeScreen(), const InboxScreen()];
+  final List<Widget> _pages = [
+    const HomeScreen(),
+    const InboxScreen(),
+    const ExploreScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +90,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _activeTab = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
