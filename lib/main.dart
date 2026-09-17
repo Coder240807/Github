@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_octicons/flutter_octicons.dart';
 
+import 'inbox.dart';
+
 void main() {
   runApp(const GithubApp());
 }
@@ -17,7 +19,60 @@ class GithubApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF0D1117),
         fontFamily: 'Roboto',
       ),
-      home: const HomeScreen(),
+      home: const MainScreen(),
+    );
+  }
+}
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int current_index = 0;
+
+  final List<Widget> _pages = [const HomeScreen(), const InboxScreen()];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(index: current_index, children: _pages),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: current_index,
+        onTap: (index) {
+          setState(() {
+            current_index = index;
+          });
+        },
+        backgroundColor: const Color(0xFF0D1117),
+        selectedItemColor: const Color(0xFF2F81F7),
+        unselectedItemColor: const Color(0xFF8B949E),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(OctIcons.home_24),
+            activeIcon: Icon(OctIcons.home_fill_24),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(OctIcons.inbox_24),
+            activeIcon: Icon(OctIcons.inbox_fill_24),
+            label: 'Inbox',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(OctIcons.telescope_24),
+            activeIcon: Icon(OctIcons.telescope_fill_24),
+            label: 'Explore',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(OctIcons.copilot_24),
+            label: 'Copilot',
+          ),
+        ],
+      ),
     );
   }
 }
@@ -53,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CircleAvatar(
               radius: 14,
               backgroundColor: Colors.white,
-              child: Text('H', style: TextStyle(color: Colors.black)),
+              child: Text('V', style: TextStyle(color: Colors.black)),
             ),
           ),
         ],
@@ -114,37 +169,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 0,
-        backgroundColor: const Color(0xFF0D1117),
-        selectedItemColor: const Color(0xFF2F81F7),
-        unselectedItemColor: const Color(0xFF8B949E),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(OctIcons.home_24),
-            activeIcon: Icon(OctIcons.home_fill_24),
-            label: 'Home',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(OctIcons.inbox_24),
-            activeIcon: Icon(OctIcons.inbox_fill_24),
-            label: 'Inbox',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(OctIcons.telescope_24),
-            activeIcon: Icon(OctIcons.telescope_fill_24),
-            label: 'Explore',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(OctIcons.copilot_24),
-            label: 'Copilot',
-          ),
-        ],
       ),
     );
   }
